@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4f8cff;
+      --background: #f6f8fa;
+      --text: #222;
+      --accent: #e0e7ff;
+    }
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      margin: 0; padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 3rem 1rem 2rem 1rem;
+      text-align: center;
+      position: relative;
+    }
+    .profile-img {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+    nav {
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+      text-align: center;
+      padding: 1rem 0;
+    }
+    nav a {
+      color: var(--primary);
+      text-decoration: none;
+      margin: 0 1.5rem;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: #222;
+    }
+    section {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      padding: 2rem;
+    }
+    h2 {
+      color: var(--primary);
+      margin-top: 0;
+    }
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      list-style: none;
+      padding: 0;
+    }
+    .skills-list li {
+      background: var(--accent);
+      color: var(--primary);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 1rem;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--accent);
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(79,140,255,0.05);
+      transition: transform 0.2s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px) scale(1.03);
+    }
+    .project-title {
+      margin: 0 0 0.5rem 0;
+      color: var(--primary);
+    }
+    .project-links a {
+      margin-right: 1rem;
+      color: #444;
+      text-decoration: underline;
+      font-size: 0.95em;
+    }
+    .social-links a {
+      margin: 0 0.5rem;
+      color: #fff;
+      font-size: 1.5rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .social-links a:hover {
+      color: #ffd700;
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .contact-form button {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .contact-form button:hover {
+      background: #3561b7;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      color: #888;
+      font-size: 1rem;
+    }
+    @media (max-width: 600px) {
+      section { padding: 1rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      nav a { margin: 0 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- HERO SECTION -->
+  <header>
+    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" class="profile-img">
+    <h1>Your Name</h1>
+    <p>Web Developer | UI/UX Designer | Tech Enthusiast</p>
+    <div class="social-links">
+      <a href="https://github.com/yourusername" target="_blank" title="GitHub">&#x1F5C3;</a>
+      <a href="https://linkedin.com/in/yourusername" target="_blank" title="LinkedIn">&#x1F465;</a>
+      <a href="mailto:your.email@example.com" title="Email">&#x2709;</a>
+    </div>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Hi! I’m <strong>Your Name</strong>, a passionate web developer with 3+ years of experience building modern, responsive websites and web apps. I love creating seamless user experiences and learning new technologies. Currently, I’m focused on React, Node.js, and UI/UX design.
+    </p>
+  </section>
+
+  <!-- SKILLS SECTION -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul class="skills-list">
+      <li>HTML5</li>
+      <li>CSS3</li>
+      <li>JavaScript (ES6+)</li>
+      <li>React</li>
+      <li>Node.js</li>
+      <li>Figma</li>
+      <li>Git & GitHub</li>
+      <li>Responsive Design</li>
+    </ul>
+  </section>
+
+  <!-- PROJECTS SECTION -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3 class="project-title">Portfolio Website</h3>
+        <p>A personal website to showcase my projects, resume, and contact info. Built with HTML, CSS, and JavaScript.</p>
+        <div class="project-links">
+          <a href="https://yourportfolio.com" target="_blank">Live Demo</a>
+          <a href="https://github.com/yourusername/portfolio" target="_blank">GitHub</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <h3 class="project-title">Task Manager App</h3>
+        <p>A full-stack to-do app with user authentication, built using React and Node.js. Features drag-and-drop tasks and real-time updates.</p>
+        <div class="project-links">
+          <a href="https://yourtaskapp.com" target="_blank">Live Demo</a>
+          <a href="https://github.com/yourusername/task-manager" target="_blank">GitHub</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <h3 class="project-title">E-commerce UI Kit</h3>
+        <p>Reusable UI components for e-commerce sites, designed in Figma and implemented with React and Styled Components.</p>
+        <div class="project-links">
+          <a href="https://github.com/yourusername/ecommerce-ui-kit" target="_blank">GitHub</a>
+        </div>
+      </div>
+      <!-- Add more projects as needed -->
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <form class="contact-form" action="mailto:your.email@example.com" method="POST" enctype="text/plain">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <p>Or email me directly at <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+  </section>
+
+  <footer>
+    &copy; 2025 Your Name. All rights reserved.
+  </footer>
+</body>
+                   </html>
+  
