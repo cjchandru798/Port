@@ -1,70 +1,105 @@
 :root {
-  --primary: #4f8cff;
-  --primary-dark: #3561b7;
-  --background: #f6f8fa;
-  --text: #222;
+  --primary: #36cfc9;
+  --primary-dark: #7c3aed;
+  --background: #f3f8ff;
+  --text: #1a202c;
   --accent: #e0e7ff;
-  --gradient: linear-gradient(90deg, #4f8cff 0%, #6f6aff 100%);
+  --gradient: linear-gradient(120deg, #36cfc9 0%, #7c3aed 100%);
   --nav-bg: #fff;
   --card-bg: #fff;
 }
 
+/* === Animated Background Effects === */
 body {
   font-family: 'Montserrat', Arial, sans-serif;
-  background: var(--background);
+  background:
+    linear-gradient(120deg, #f3f8ff 0%, #e0e7ff 100%),
+    radial-gradient(circle at 80% 20%, #36cfc922 0%, transparent 70%),
+    radial-gradient(circle at 20% 80%, #7c3aed22 0%, transparent 70%);
+  background-blend-mode: lighten;
   color: var(--text);
   margin: 0;
   padding: 0;
   line-height: 1.6;
   min-height: 100vh;
-  transition: background 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-              color 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-              opacity 0.6s ease-in-out;
-  opacity: 1;
-  /* Adding subtle animated background gradient */
-  background-image: radial-gradient(circle at top left, #4f8cff33, transparent 70%), 
-                    radial-gradient(circle at bottom right, #6f6aff33, transparent 70%);
-  background-repeat: no-repeat;
-  background-size: 50% 50%;
-  animation: backgroundPulse 15s ease-in-out infinite alternate;
+  transition: background 0.6s, color 0.6s;
+  position: relative;
+  overflow-x: hidden;
 }
 
-/* Background pulse animation for subtle dynamic effect */
-@keyframes backgroundPulse {
-  0% {
-    background-position: top left, bottom right;
-    opacity: 0.8;
-  }
-  100% {
-    background-position: center, center;
-    opacity: 1;
-  }
+/* Animated blobs using pseudo-elements */
+body::before, body::after {
+  content: "";
+  position: fixed;
+  z-index: 0;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.5;
+  pointer-events: none;
+  animation: blobMove 18s ease-in-out infinite alternate;
+}
+body::before {
+  width: 340px; height: 340px;
+  background: #36cfc9;
+  top: -120px; left: -120px;
+  animation-delay: 0s;
+}
+body::after {
+  width: 280px; height: 280px;
+  background: #7c3aed;
+  bottom: -100px; right: -100px;
+  animation-delay: 9s;
+}
+@keyframes blobMove {
+  0%   { transform: scale(1) translateY(0) translateX(0);}
+  50%  { transform: scale(1.2) translateY(40px) translateX(60px);}
+  100% { transform: scale(1) translateY(0) translateX(0);}
 }
 
-/* Dark mode variables */
+/* Animated floating particles */
+.particles {
+  pointer-events: none;
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 1;
+  overflow: hidden;
+}
+.particles span {
+  position: absolute;
+  display: block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(120deg, #36cfc9 60%, #7c3aed 100%);
+  opacity: 0.18;
+  animation: particleFloat 12s linear infinite;
+}
+@keyframes particleFloat {
+  0%   { transform: translateY(100vh) scale(0.8);}
+  100% { transform: translateY(-10vh) scale(1.2);}
+}
+
+/* === Dark Mode === */
 body.dark {
-  --background: #181a1b;
-  --text: #f6f8fa;
+  --background: #1a202c;
+  --text: #f3f8ff;
   --nav-bg: #23272f;
   --card-bg: #23272f;
   --accent: #2d3440;
-  /* Dark mode background with subtle animated gradient */
-  background-image: radial-gradient(circle at top left, #3561b733, transparent 70%), 
-                    radial-gradient(circle at bottom right, #4f8cff33, transparent 70%);
-  animation: backgroundPulseDark 15s ease-in-out infinite alternate;
+  background:
+    linear-gradient(120deg, #23272f 0%, #2d3440 100%),
+    radial-gradient(circle at 80% 20%, #36cfc944 0%, transparent 70%),
+    radial-gradient(circle at 20% 80%, #7c3aed44 0%, transparent 70%);
+}
+body.dark::before {
+  background: #36cfc9;
+  opacity: 0.25;
+}
+body.dark::after {
+  background: #7c3aed;
+  opacity: 0.25;
 }
 
-@keyframes backgroundPulseDark {
-  0% {
-    background-position: top left, bottom right;
-    opacity: 0.7;
-  }
-  100% {
-    background-position: center, center;
-    opacity: 1;
-  }
-}
-
+/* === Layout & Components === */
 header {
   background: var(--gradient);
   color: #fff;
@@ -72,21 +107,15 @@ header {
   text-align: center;
   box-shadow: 0 4px 16px rgba(79,140,255,0.15);
   animation: fadeInDown 1s cubic-bezier(0.4, 0, 0.2, 1);
-  /* Adding a subtle moving gradient background */
   background-size: 200% 200%;
   animation: gradientShift 8s ease infinite alternate, fadeInDown 1s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 2;
 }
-
-/* Smooth gradient shifting animation */
 @keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
 }
-
 @keyframes fadeInDown {
   from { opacity: 0; transform: translateY(-50px);}
   to   { opacity: 1; transform: translateY(0);}
@@ -145,7 +174,6 @@ nav {
   top: 0;
   z-index: 100;
 }
-
 nav a {
   color: var(--primary);
   text-decoration: none;
@@ -207,11 +235,10 @@ main {
   animation: fadeSlideUp 1.2s forwards cubic-bezier(0.4, 0, 0.2, 1);
   animation-delay: 0.3s;
   transition: background 0.6s ease, color 0.6s ease;
-  /* Adding subtle glassmorphism effect */
   backdrop-filter: saturate(180%) blur(12px);
   border: 1px solid rgba(79, 140, 255, 0.15);
+  z-index: 2;
 }
-
 @keyframes fadeSlideUp {
   to {
     opacity: 1;
@@ -294,6 +321,12 @@ h2::after {
   animation: cardPopUp 1.2s forwards cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform, box-shadow, background;
 }
+@keyframes cardPopUp {
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
 .project-card:hover {
   transform: scale(1.1) translateY(-10px) rotate(-2deg);
   box-shadow: 0 12px 36px rgba(79,140,255,0.25);
@@ -358,44 +391,31 @@ footer {
   border-top: 1px solid #e0e7ff;
   opacity: 0;
   animation: fadeIn 1.3s 1.2s forwards cubic-bezier(0.4, 0, 0.2, 1);
-  /* Subtle animated background gradient */
-  background-image: linear-gradient(45deg, #4f8cff22, #6f6aff22);
+  background-image: linear-gradient(45deg, #36cfc922, #7c3aed22);
   background-size: 200% 200%;
   animation: footerGradientShift 10s ease infinite alternate, fadeIn 1.3s 1.2s forwards;
 }
-
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-
 @keyframes footerGradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
 }
-
 body.dark footer {
   background: #23272f;
   color: #bbb;
   border-top: 1px solid #2d3440;
-  background-image: linear-gradient(45deg, #3561b722, #4f8cff22);
+  background-image: linear-gradient(45deg, #36cfc944, #7c3aed44);
   animation: footerGradientShiftDark 10s ease infinite alternate, fadeIn 1.3s 1.2s forwards;
 }
-
 @keyframes footerGradientShiftDark {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
 }
 
-/* Responsive tweaks */
+/* === Responsive Tweaks === */
 @media (max-width: 700px) {
   main { padding: 1.2rem; }
   .projects-grid { grid-template-columns: 1fr; gap: 1.5rem; }
